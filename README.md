@@ -9,3 +9,4 @@ v3 intentionally avoids the legacy DirectX 8 SDK: it uses minimal ABI declaratio
 Build as Win32/x86. After building, rename `GTA3_Hard60FPS.dll` to `GTA3_Hard60FPS.asi` and place it in the GTA III directory with your other ASI plugins.
 
 This is experimental. Keep a backup of your game folder and test it alongside your existing fixes.
+This is currently in BETA, a full release that doesnt depend on the DXD9 wrapper will come later
