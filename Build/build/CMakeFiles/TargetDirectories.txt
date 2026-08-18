@@ -1,0 +1,3 @@
+C:/Program Files (x86)/Rockstar Games/GTAIII/Build/build/CMakeFiles/GTA3_Hard60FPS.dir
+C:/Program Files (x86)/Rockstar Games/GTAIII/Build/build/CMakeFiles/ALL_BUILD.dir
+C:/Program Files (x86)/Rockstar Games/GTAIII/Build/build/CMakeFiles/ZERO_CHECK.dir
