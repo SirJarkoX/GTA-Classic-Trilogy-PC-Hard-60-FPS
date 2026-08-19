@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Program Files (x86)\Rockstar Games\GTAIII\build\GTA3VC_Hard60FPS_Final_Fixed\GTA3VC_Hard60FPS_Final_Fixed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Program Files (x86)\Rockstar Games\GTAIII\build\GTA3VC_Hard60FPS_Final_Fixed\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{79881E81-6F85-388E-A8C8-E1EB80DC89AB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

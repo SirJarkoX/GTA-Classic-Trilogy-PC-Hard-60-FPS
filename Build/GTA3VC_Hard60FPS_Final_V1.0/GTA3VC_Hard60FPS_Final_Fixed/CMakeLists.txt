@@ -1,0 +1,9 @@
+cmake_minimum_required(VERSION 3.20)
+project(GTA3VC_Hard60FPS_Final_Fixed LANGUAGES CXX)
+
+add_library(GTA3VC_Hard60FPS_Final_Fixed SHARED
+    GTA3VC_Hard60FPS_Final_Fixed.cpp
+)
+
+target_compile_features(GTA3VC_Hard60FPS_Final_Fixed PRIVATE cxx_std_17)
+target_compile_definitions(GTA3VC_Hard60FPS_Final_Fixed PRIVATE WIN32_LEAN_AND_MEAN)

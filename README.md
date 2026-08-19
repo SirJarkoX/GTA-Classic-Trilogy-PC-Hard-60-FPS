@@ -1,45 +1,27 @@
-# GTA III / Vice City --- Hard 60 FPS
+# GTA III / Vice City — Hard 60 FPS
 
-**Projects:** `GTA3_Hard60FPS_SirJarko.asi` /
-`GTA_VC_Hard60FPS_SirJarko.asi`\
-**Status:** Beta\
-**Targets:** Grand Theft Auto III & Grand Theft Auto: Vice City (PC,
-32-bit/x86)\
+**Project:** `GTA3VC_Hard60FPS_SirJarko.asi`  \
+**Status:** Beta  \
+**Targets:** Grand Theft Auto III & Grand Theft Auto: Vice City (PC, 32-bit/x86)  \
 **Author:** SirJarko
 
 ## What is this?
 
-A small ASI plugin project for the PC versions of **Grand Theft Auto III
-and Grand Theft Auto: Vice City** that implements a **hard/locked 60 FPS
-presentation cap**.
+**GTA III / Vice City — Hard 60 FPS** is a small ASI plugin that locks the
+classic PC versions of **Grand Theft Auto III** and **Grand Theft Auto Vice City** to **60 FPS**.
 
-III and VC are being treated as separate implementations from San
-Andreas. Although the games share a large amount of technical heritage,
-their code and behaviour are not assumed to be identical.
+The important part is simple:
 
-These releases are therefore currently **Beta** while the
-implementations are tested across different hardware, software and game
-configurations.
+> **One ASI, two games, native D3D8 or a compatible D3D8 wrapper.**
 
-### What it does
+The limiter works at the game's presentation layer rather than relying on
+GPU driver frame limiting. This was created because driver-level caps can
+be inconsistent in older games, particularly across gameplay, menus,
+cutscenes and other parts of the game.
 
--   Enforces a hard 60 FPS presentation cap.
--   Runs as an ASI plugin.
--   Targets the original 32-bit/x86 games.
--   Is intended to work regardless of the renderer, including standard
-    Direct3D 9 and DXVK where supported.
--   Is intended to coexist with other fixes and modifications where
-    possible.
-
-### What it does not do
-
--   It is not a general-purpose frame-rate or game-engine overhaul.
--   It does not include GTA III, Vice City or any copyrighted Rockstar
-    assets.
--   It does not guarantee compatibility with every mod, driver, GPU,
-    Windows version or game installation.
--   It does not assume that behaviour confirmed in San Andreas will
-    automatically apply to III or VC.
+The project is also intended as a small preservation-oriented project:
+the source is kept relatively simple and dependency-light so it can remain
+useful as hardware, drivers and graphics wrappers change.
 
 ## Why is this?
 
@@ -61,279 +43,234 @@ The San Andreas implementation was the first version developed. III and
 VC are being approached separately and released as beta implementations
 while their individual behaviour is investigated and tested.
 
-------------------------------------------------------------------------
-
 ## Installation
+
+You do **not** need to understand how the limiter works to use it.
+
+### You need
+
+- A legitimate PC installation of GTA III or Vice City.
+- A working **ASI loader**.
+- `GTA3VC_Hard60FPS_SirJarko.asi`.
 
 ### GTA III
 
-You need:
+Put the ASI into the game's main directory (the folder containing
+`gta3.exe`) alongside your ASI loader, or into your `scripts` folder if
+your setup uses one.
 
--   A legitimate PC installation of GTA III.
--   A working **ASI loader**.
--   `GTA3_Hard60FPS_SirJarko.asi`.
-
-Copy the ASI into the game's main directory --- the folder containing
-`gta3.exe` --- alongside your ASI loader, or into your scripts folder if
-your mod setup uses one.
-
-Example:
-
-``` text
+```text
 Grand Theft Auto III/
 ├── gta3.exe
 ├── [ASI loader]
-├── GTA3_Hard60FPS_SirJarko.asi
+├── GTA3VC_Hard60FPS_SirJarko.asi
 └── ...
 ```
 
-### GTA Vice City
+### Vice City
 
-You need:
+Use the **same ASI**. Put it into the game's main directory (the folder
+containing `gta-vc.exe`) alongside your ASI loader, or into your `scripts`
+folder if your setup uses one.
 
--   A legitimate PC installation of Vice City.
--   A working **ASI loader**.
--   `GTA_VC_Hard60FPS_SirJarko.asi`.
-
-Copy the ASI into the game's main directory --- the folder containing
-`gta-vc.exe` --- alongside your ASI loader, or into your scripts folder
-if your mod setup uses one.
-
-Example:
-
-``` text
+```text
 Grand Theft Auto Vice City/
 ├── gta-vc.exe
 ├── [ASI loader]
-├── GTA_VC_Hard60FPS_SirJarko.asi
+├── GTA3VC_Hard60FPS_SirJarko.asi
 └── ...
 ```
 
-No original game files are distributed with these projects.
+No original game files are distributed with this project.
 
-------------------------------------------------------------------------
+### Wrappers
 
-## Building from Source
+You do not need a wrapper to use the limiter. Native Direct3D 8 is
+supported.
 
-### Required software
+The same ASI was also tested successfully with **two different D3D8 wrapper
+configurations**, one for each game. Compatibility with an arbitrary future
+wrapper is not guaranteed, but a wrapper that preserves the normal D3D8
+device/presentation interface is a candidate for testing.
 
-The current development setup uses:
+## What it does
 
--   **Visual Studio / Visual Studio C++ Build Tools**
--   **CMake**
--   **VS Code** (used as the development environment)
--   **x86 Native Tools Command Prompt for Visual Studio**
--   A Windows SDK/toolchain capable of building 32-bit C++
+- Locks GTA III and Vice City to 60 FPS.
+- Uses one shared ASI implementation for both games.
+- Targets the original 32-bit/x86 PC versions.
+- Works with native Direct3D 8.
+- Has been tested with D3D8 wrapper configurations.
+- Uses high-resolution Windows timing for frame pacing.
+- Is intended to coexist with other fixes and modifications where possible.
 
-Both projects are built as **Win32/x86**, matching the 32-bit game
-executables.
+It does **not**:
 
-### Configure
+- Overhaul the game engines.
+- Include copyrighted Rockstar game assets.
+- Fix unrelated rendering bugs.
+- Guarantee compatibility with every game build, mod, driver, GPU,
+  Windows version or wrapper.
 
-From the relevant project directory, open an **x86 Native Tools Command
-Prompt for Visual Studio** and run:
+## Confirmed development tests
 
-``` bat
-cmake -S . -B build -A Win32
+| | GTA III | Vice City |
+| --- | --- | --- |
+| Native Direct3D 8 | Tested | Tested |
+| D3D8 wrapper configuration | Tested | Tested |
+| Hard 60 FPS | Tested | Tested |
+| Shared ASI | Yes | Yes |
+
+The same final ASI binary was used for the tested GTA III and Vice City
+configurations.
+
+A GTA III taxi-related visual issue was observed with native D3D8. It also
+occurred without this ASI and disappeared when the tested wrapper was
+enabled, so it is not currently considered an issue caused by the limiter.
+
+## How it works
+
+The plugin operates at the common Direct3D 8 presentation interface:
+
+```text
+GTA III / Vice City
+        |
+        v
+Direct3DCreate8
+        |
+        v
+IDirect3D8::CreateDevice
+        |
+        v
+IDirect3DDevice8::Present
+        |
+        v
+60 FPS frame pacing
 ```
+
+The implementation hooks the D3D8 `CreateDevice` and `Present` path and
+applies frame pacing at `IDirect3DDevice8::Present`.
+
+It uses Windows `QueryPerformanceCounter` / `QueryPerformanceFrequency`
+for high-resolution timing, with `Sleep` for coarse waiting and
+`SwitchToThread` for the final portion.
+
+The project does not require the legacy Direct3D 8 SDK headers or
+libraries. The required interface types are declared locally so the
+project can be built with a modern Visual Studio C++ toolchain.
+
+The design is intentionally tied to the D3D8 interface rather than to one
+specific underlying renderer or wrapper.
+
+## Building from source
+
+### Requirements
+
+- Visual Studio / Visual Studio C++ Build Tools
+- CMake
+- VS Code (development environment used for the project)
+- x86 Native Tools Command Prompt for Visual Studio
+- A Windows SDK/toolchain capable of building 32-bit C++
+
+Both games are 32-bit/x86, so the project is built as **Win32**.
 
 ### Build
 
-``` bat
+From the project directory:
+
+```bat
+cmake -S . -B build -A Win32
 cmake --build build --config Release
 ```
 
-The resulting build should be renamed to the appropriate ASI filename:
+Rename the resulting DLL to:
 
-``` text
-GTA3_Hard60FPS_SirJarko.asi
+```text
+GTA3VC_Hard60FPS_SirJarko.asi
 ```
 
-or:
-
-``` text
-GTA_VC_Hard60FPS_SirJarko.asi
-```
-
-Then copy the ASI into the relevant game installation with a compatible
-ASI loader.
-
-> **Beta note:** Build/output names may change during development. Check
-> the relevant repository/project files for the current CMake target and
-> output filename.
-
-------------------------------------------------------------------------
-
-## Mod Compatibility / Testing
-
-III and VC are being tested independently rather than assuming that the
-mod environment used for San Andreas will behave identically.
-
-Related GTA PC projects/tools of interest include:
-
--   **SilentPatch**
--   **Widescreen Fix**
--   **Open Limit Adjuster (OLA)**
--   **DXVK**
-
-These projects are separate from this project and are not bundled with
-it.
-
-Compatibility with individual mods should be considered **game and
-version specific** and should be confirmed through testing.
-
-### DXVK note
-
-The games use their native Direct3D rendering path. When DXVK is
-installed, its `d3d9.dll` can translate a D3D9 rendering path to Vulkan.
-
-DXVK is a separate project and is **not bundled with or specific to this
-project**. Compatibility with a particular DXVK release should therefore
-be treated as a testing result rather than a fixed project dependency.
-
-------------------------------------------------------------------------
+Then install it using a compatible ASI loader.
 
 ## Compatibility
 
-Both implementations are currently **Beta**.
+The current status is **Beta**. The tested results above confirm the
+configurations that were actually tested; they are not a guarantee for
+every possible environment.
 
-Particularly useful test environments include:
+Useful additional test environments include:
 
--   Windows Vista
--   Windows 7
--   Windows 10
--   Windows 11
--   AMD GPUs
--   NVIDIA GPUs
--   Different driver generations
--   Clean and modded installations
--   Different display resolutions/configurations
--   Different GTA III and Vice City releases/builds
+- Windows Vista
+- Windows 7
+- Windows 10
+- Windows 11
+- AMD and NVIDIA GPUs
+- Different driver generations
+- Clean and modded installations
+- Different resolutions and display configurations
+- Different GTA III / Vice City releases or builds
+- Additional D3D8 wrappers
 
-**Windows 7 and Vista are of particular interest because of the age of
-the original games and their graphics stacks.**
+Compatibility with individual mods should be considered game and version
+specific.
 
-A configuration should be considered confirmed only after it has
-actually been tested.
+Related projects/tools include **SilentPatch**, **Widescreen Fix**,
+**Open Limit Adjuster (OLA)** and **DXVK**. These are separate projects
+and are not bundled with this project.
 
-A successful result on GTA III does not automatically confirm the same
-result on Vice City, and vice versa.
+## Why open source?
 
-------------------------------------------------------------------------
+The project is being released openly so others can:
 
-## AI-Assisted Development
+- Review the implementation.
+- Compile it themselves.
+- Test hardware and game configurations I cannot access.
+- Find bugs and improve compatibility.
+- Test additional game builds and D3D8 wrappers.
+- Submit fixes or improvements.
+- Learn from or build upon the work.
+
+This is a practical project, not a claim of complete mastery of the GTA
+III or Vice City engines. If an assumption or implementation is wrong,
+I'd rather it be visible and correctable.
+
+## AI-assisted development
 
 These projects were developed with **significant AI assistance**.
 
-AI was used for things such as:
+AI was used for C/C++ development assistance, debugging, understanding
+unfamiliar code, exploring implementation approaches, technical
+explanations, code review and documentation.
 
--   C/C++ development assistance
--   Understanding unfamiliar code
--   Debugging
--   Exploring implementation approaches
--   Technical explanations
--   Code review
--   Documentation
+The projects were not automatically generated and validated by AI.
+They required human direction, experimentation, testing and decisions
+about implementation and validation.
 
-That does **not** mean the projects were generated and automatically
-validated by AI.
-
-The implementations required human direction, experimentation, testing
-and decisions about what to implement and how to validate it.
-
-I am also **not presenting myself as an expert reverse engineer or
-claiming that every line was manually written from scratch**.
-
-AI-generated code can be wrong, make incorrect assumptions or introduce
-bugs. If you find a problem, please report it.
-
-------------------------------------------------------------------------
-
-## Limitations
-
-These are independently developed projects, and there are limits to the
-amount of hardware, software and game configurations that can be tested.
-
-I cannot guarantee:
-
--   Every Windows version.
--   Every GPU or driver.
--   Every GTA III or Vice City release/build.
--   Compatibility with every ASI/plugin/mod.
--   Compatibility with heavily modified installations.
--   That future third-party mod updates will remain compatible.
--   Identical behaviour between GTA III, Vice City and San Andreas.
-
-Reports from other users are therefore extremely useful.
-
-When reporting an issue, include your:
-
--   Windows version/build
--   CPU
--   GPU and driver
--   Game and version/build
--   ASI loader
--   Other installed mods
--   Resolution/display setup
--   Steps to reproduce the problem
--   Crash information/logs where available
-
-------------------------------------------------------------------------
-
-## Why release the source?
-
-The projects are being released openly so that others can:
-
--   Review the implementation.
--   Compile it themselves.
--   Test it on hardware I cannot access.
--   Find bugs.
--   Improve compatibility.
--   Submit fixes.
--   Learn from or build upon the work.
-
-This is a practical project rather than a claim of complete mastery of
-the GTA III or Vice City engines.
-
-If an assumption or implementation is wrong, I'd rather it be identified
-and corrected than left undocumented.
-
-The **Beta** status is intentional: real-world testing is part of the
-development process.
-
-------------------------------------------------------------------------
+AI-generated code can be wrong or introduce bugs. If you find a problem,
+please report it.
 
 ## Disclaimer
 
 Grand Theft Auto III, Grand Theft Auto: Vice City and their associated
-intellectual property belong to **Rockstar Games / Take-Two
-Interactive**.
+intellectual property belong to **Rockstar Games / Take-Two Interactive**.
 
-These are unofficial community projects and are not affiliated with,
+This is an unofficial community project and is not affiliated with,
 endorsed by or sponsored by Rockstar Games or Take-Two Interactive.
 
-No copyrighted Rockstar game assets are distributed with these projects.
-
+No copyrighted Rockstar game assets are distributed with this project.
 Users are responsible for obtaining and legally owning their own copies
 of the games.
-
-------------------------------------------------------------------------
 
 ## Credits
 
 **Project / development:** SirJarko
 
 **AI assistance:** AI tools were used extensively for programming
-assistance, debugging, technical research, code review and
-documentation.
+assistance, debugging, technical research, code review and documentation.
 
-**Third-party projects/tools relevant to development/testing:**
-SilentPatch, Widescreen Fix, Open Limit Adjuster and DXVK.
+**Related third-party projects/tools:** SilentPatch, Widescreen Fix,
+Open Limit Adjuster and DXVK.
 
 Please refer to each project's own documentation and licence for its
 respective terms.
-
-------------------------------------------------------------------------
 
 ## License
 
