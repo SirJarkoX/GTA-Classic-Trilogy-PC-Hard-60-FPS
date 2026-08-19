@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Program Files (x86)\Rockstar Games\GTA San Andreas\Build\SA_Hard60FPS_DualRenderer\SA_Hard60FPS_DualRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Program Files (x86)\Rockstar Games\GTA San Andreas\Build\SA_Hard60FPS_DualRenderer\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{31859F9D-E38A-3871-AA30-6CBDB76BCFD4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

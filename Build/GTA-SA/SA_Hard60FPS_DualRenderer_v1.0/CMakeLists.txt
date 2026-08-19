@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.20)
+project(SA_Hard60FPS_DualRenderer LANGUAGES CXX)
+
+add_library(SA_Hard60FPS_DualRenderer SHARED
+    SA_Hard60FPS_DualRenderer.cpp
+)
+
+target_compile_features(SA_Hard60FPS_DualRenderer PRIVATE cxx_std_17)
+target_compile_definitions(SA_Hard60FPS_DualRenderer PRIVATE WIN32_LEAN_AND_MEAN)
+target_link_libraries(SA_Hard60FPS_DualRenderer PRIVATE d3d9)
