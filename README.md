@@ -1,4 +1,4 @@
-# GTA Classic Trilogy PC — Hard 60 FPS
+# GTA Classic Trilogy PC - Hard 60 FPS
 
 **Projects:** `GTA3VC_Hard60FPS_SirJarko.asi` / `GTASA_Hard60FPS_SirJarko.asi`  \
 **Status:** Beta  \
