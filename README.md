@@ -7,7 +7,7 @@
 
 ## What is this?
 
-**GTA Classic Trilogy PC — Hard 60 FPS** is a small ASI plugin project for the
+**GTA Classic Trilogy PC - Hard 60 FPS** is a small ASI plugin project for the
 classic PC versions of **Grand Theft Auto III, Grand Theft Auto: Vice City
 and Grand Theft Auto: San Andreas**.
 
