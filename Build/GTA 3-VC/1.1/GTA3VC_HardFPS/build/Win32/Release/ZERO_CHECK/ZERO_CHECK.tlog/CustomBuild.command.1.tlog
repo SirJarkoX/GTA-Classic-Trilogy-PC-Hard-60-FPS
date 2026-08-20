@@ -1,0 +1,10 @@
+^C:\PROGRAM FILES (X86)\ROCKSTAR GAMES\GTAIII\BUILD\GTA3VC_HARDFPS\BUILD\CMAKEFILES\274E9872A546226AB015C606A60076E1\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Program Files (x86)/Rockstar Games/GTAIII/build/GTA3VC_HardFPS" "-BC:/Program Files (x86)/Rockstar Games/GTAIII/build/GTA3VC_HardFPS/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Program Files (x86)/Rockstar Games/GTAIII/build/GTA3VC_HardFPS/build/GTA3VC_HardFPS_v1_1.slnx"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
