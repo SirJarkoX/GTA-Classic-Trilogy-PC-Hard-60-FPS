@@ -1,7 +1,7 @@
 # GTA Classic Trilogy PC - Hard 60 FPS
 
 **Projects:** `GTA3VC_Hard60FPS_SirJarko.asi` / `GTASA_Hard60FPS_SirJarko.asi`  \
-**Status:** Release (Open for testing)  \
+**Status:** Release -Open for testing  \
 **Targets:** Grand Theft Auto III, Grand Theft Auto: Vice City & Grand Theft Auto: San Andreas (classic PC releases, 32-bit/x86)  \
 **Author:** SirJarko
 
