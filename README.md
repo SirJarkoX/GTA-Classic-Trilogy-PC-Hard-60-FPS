@@ -13,7 +13,7 @@ and Grand Theft Auto: San Andreas**.
 
 The goal is simple:
 
-> **Hard 60 FPS for the classic GTA trilogy on PC.**
+> **Hard 60 FPS LOCK in all game scenarios for the classic GTA trilogy on PC.**
 
 The trilogy uses **two implementations** rather than one universal codebase:
 
@@ -35,31 +35,6 @@ The project is also intended as a small preservation-oriented project:
 the source is kept relatively simple and dependency-light so it can remain
 useful as hardware, drivers and graphics wrappers change.
 
-## Why is this?
-
-I moved to an AMD GPU well over a year ago. In my experience, driver-level
-framerate capping is not quite as consistent with these older games as I
-wanted.
-
-For example, a driver-level 60 FPS cap may behave correctly during
-gameplay while menus, cutscenes or other parts of the game behave
-differently.
-
-For classic games such as **GTA III, Vice City and San Andreas**, I wanted
-a more consistent solution that controls presentation from the game/plugin
-side rather than relying entirely on the GPU driver.
-
-After more than a year of not finding a solution that properly addressed
-what I wanted, I decided to develop one myself.
-
-The project has since grown into a single open-source trilogy project.
-The three games are not forced into one implementation: III and VC share
-their D3D8 implementation, while San Andreas has its own D3D9
-implementation.
-
-The long-term goal is also preservation. The code is intentionally kept
-relatively small and dependency-light so that it can remain understandable,
-buildable and useful as hardware, drivers and graphics wrappers change.
 
 ## Installation
 
@@ -106,6 +81,32 @@ GTASA_Hard60FPS_SirJarko.asi
 Put it into the game's main directory (the folder containing `gta_sa.exe`)
 alongside your ASI loader, or into your `scripts` folder if your setup
 uses one.
+
+## Why is this?
+
+I moved to an AMD GPU well over a year ago. In my experience, driver-level
+framerate capping is not quite as consistent with these older games as I
+wanted.
+
+For example, a driver-level 60 FPS cap may behave correctly during
+gameplay while menus, cutscenes or other parts of the game behave
+differently.
+
+For classic games such as **GTA III, Vice City and San Andreas**, I wanted
+a more consistent solution that controls presentation from the game/plugin
+side rather than relying entirely on the GPU driver.
+
+After more than a year of not finding a solution that properly addressed
+what I wanted, I decided to develop one myself.
+
+The project has since grown into a single open-source trilogy project.
+The three games are not forced into one implementation: III and VC share
+their D3D8 implementation, while San Andreas has its own D3D9
+implementation.
+
+The long-term goal is also preservation. The code is intentionally kept
+relatively small and dependency-light so that it can remain understandable,
+buildable and useful as hardware, drivers and graphics wrappers change.
 
 ### Renderer / wrapper notes
 
@@ -251,16 +252,16 @@ The current release is **1.0**. The configurations listed in the testing
 table above are confirmed development results, not a guarantee for every
 possible environment.
 
-Useful additional test environments include:
+Useful additional and confirmed test environments include:
 
 - Windows Vista
 - Windows 7
 - Windows 10
-- Windows 11
-- AMD and NVIDIA GPUs
+- Windows 11 (Tested)
+- AMD and NVIDIA GPUs (Tested)
 - Different driver generations
 - Clean and modded installations
-- Different resolutions and display configurations
+- Different resolutions and display configurations (Tested at 1440p on one device & 1080p on the other)
 - Different GTA III, Vice City and San Andreas releases/builds
 - Additional D3D8 wrappers
 - Additional D3D9 translation layers
@@ -278,10 +279,9 @@ The project is being released openly so others can:
 
 - Review the implementation.
 - Compile it themselves.
-- Test hardware and game configurations I cannot access.
+- Test hardware and game configurations I cannot access across all three games.
 - Find bugs and improve compatibility.
 - Test additional game builds and graphics wrappers.
-- Test configurations I cannot access across all three games.
 - Submit fixes or improvements.
 - Learn from or build upon the work.
 
