@@ -39,7 +39,7 @@ GTA3VC_HardFPS_v1_1.asi
 HardFPS.ini
 ```
 
-Put both files into the corrosponding game's main directory (the folder containing `gta3.exe`) for GTA III or (the folder containing `gta-vc.exe`) for GTA: Vice City 
+Put both files into the corresponding game's main directory (the folder containing `gta3.exe`) for GTA III or (the folder containing `gta-vc.exe`) for Grand Theft Auto: Vice City 
 alongside your ASI loader, or into your `scripts` folder if your setup uses one.
 
 ### Grand Theft Auto: San Andreas
@@ -207,13 +207,6 @@ The resulting DLL is renamed to the appropriate ASI filename:
 ```text
 GTA3VC_HardFPS_v1_1.asi
 SA_HardFPS_v1_1.asi
-```
-
-For example, from the relevant project directory:
-
-```bat
-cmake -S . -B build -A Win32
-cmake --build build --config Release
 ```
 
 The compiled output will be located in the CMake build directory under the `Release` configuration. Rename the resulting DLL to the appropriate `.asi` filename above, then install it using a compatible ASI loader.
